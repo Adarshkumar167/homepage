@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:homepage/color.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -9,7 +10,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   bool showContainer = false;
-  bool isIconTapped = false;
+  bool showSubtitle = false;
 
   void toggleContainer() {
     setState(() {
@@ -17,10 +18,17 @@ class _HomeState extends State<Home> {
     });
   }
 
+  void toggleSubtitle() {
+    setState(() {
+      showSubtitle = !showSubtitle;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Column(
           children: [
             const SizedBox(
@@ -68,7 +76,7 @@ class _HomeState extends State<Home> {
                     const Text(
                       'My name is Didi',
                       style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(
                       height: 20,
@@ -105,138 +113,141 @@ class _HomeState extends State<Home> {
               height: 30,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: 0.1 * MediaQuery.of(context).size.width),
-              child: const Row(
+              padding: const EdgeInsets.only(
+                  top: 15, bottom: 15, left: 10, right: 10),
+              child: Row(
                 children: [
-                  Text(
-                    'Food Drives',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  const Text(
+                    "Food Drives",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w800,
+                      fontSize: 18,
+                    ),
                   ),
                   Spacer(),
-                  Text(
-                    'See all ',
-                    style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Icon(
-                    Icons.arrow_forward_ios_rounded,
-                    size: 12,
-                    color: Colors.grey,
-                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Row(
+                      children: [
+                        Text(
+                          "See all",
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.grey.shade700),
+                        ),
+                        Icon(
+                          Icons.arrow_forward_ios,
+                          size: 14,
+                          color: Colors.grey.shade700,
+                        ),
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),
-            Container(
-              width: 0.75 * MediaQuery.of(context).size.width,
-              alignment: Alignment.bottomCenter,
-              margin: const EdgeInsets.only(top: 20),
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 2,
-                    blurRadius: 5,
-                    offset: const Offset(0, 3),
-                  ),
-                ],
-              ),
-              child: Column(
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                    ),
-                    child: Image.asset(
-                      'assets/images/food_drives/Img1.png',
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      const Text(
-                        'UNITE, SHARE, CARE;',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const Spacer(),
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            isIconTapped = !isIconTapped;
-                          });
-                        },
-                        child: Container(
-                          width: 25,
-                          height: 25,
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Color.fromRGBO(96, 188, 250, 1),
+            SizedBox(
+              height: 290,
+              width: MediaQuery.of(context).size.width,
+              child: ListView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 5,
+                  itemBuilder: (context, index) {
+                    return Column(
+                        children: [
+                      SizedBox(
+                        width: 280,
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
                           ),
-                          child: isIconTapped
-                              ? const Icon(
-                                  Icons.visibility_off_outlined,
-                                  color: Colors.white,
-                                  size: 20,
-                                )
-                              : const Icon(
-                                  Icons.visibility,
-                                  color: Colors.white,
-                                  size: 20,
+                          color: Colors.white,
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(3.0),
+                                child: Card(
+                                  elevation: 3,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius:
+                                    BorderRadius.circular(20),
+                                  ),
+                                  clipBehavior: Clip.antiAlias,
+                                  child: ClipRRect(
+                                    child: Ink.image(
+                                      image: const AssetImage(
+                                          "assets/images/food_drives/Img1.png"),
+                                      height: 170,
+                                      width: 230,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
                                 ),
+                              ),
+                              ListTile(
+                                title: const Text("Title"),
+                                subtitle: showSubtitle ? const Text("Subtitle") : null,
+                                trailing: FloatingActionButton.small(
+                                  backgroundColor: "49E5EA".toColor(),
+                                  heroTag: "float$index",
+                                  elevation: 0,
+                                  onPressed: () {
+                                    toggleSubtitle();
+                                  },
+                                  child: showSubtitle ? Icon(Icons.visibility_off):Icon(Icons.remove_red_eye_rounded),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 10,left: 8,right: 8),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Text("Details here")
+
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
-                    ],
-                  ),
-                  if (isIconTapped)
-                    GestureDetector(
-                      child: const Text(
-                        "I want to do something here",
-                        style: TextStyle(fontSize: 8),
-                      ),
-                    ),
-                  const Row(
-                    children: [
-                      Text(
-                        "150 People's Meal (22 Comrades Joined) 1/07/2023 @ 5:00pm",
-                        style: TextStyle(fontSize: 7),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+                    ]);
+                  }),
             ),
-            const SizedBox(
-              height: 30,
-            ),
+
             Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: 0.1 * MediaQuery.of(context).size.width),
-              child: const Row(
+              padding: const EdgeInsets.only(
+                  top: 15, bottom: 15, left: 10, right: 10),
+              child: Row(
                 children: [
-                  Text(
-                    'Popular Mentor',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  const Text(
+                    "Popular Mentor",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w800,
+                      fontSize: 18,
+                    ),
                   ),
                   Spacer(),
-                  Text(
-                    'See all ',
-                    style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Icon(
-                    Icons.arrow_forward_ios_rounded,
-                    size: 12,
-                    color: Colors.grey,
-                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Row(
+                      children: [
+                        Text(
+                          "See all",
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.grey.shade700),
+                        ),
+                        Icon(
+                          Icons.arrow_forward_ios,
+                          size: 14,
+                          color: Colors.grey.shade700,
+                        ),
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),
