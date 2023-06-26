@@ -146,7 +146,7 @@ class _HomeState extends State<Home> {
                   )
                 ],
               ),
-            ),
+            ),//Food drive(FD)
             SizedBox(
               height: 290,
               width: MediaQuery.of(context).size.width,
@@ -216,7 +216,7 @@ class _HomeState extends State<Home> {
                       ),
                     ]);
                   }),
-            ),
+            ),//FD builder
 
             Padding(
               padding: const EdgeInsets.only(
@@ -252,7 +252,7 @@ class _HomeState extends State<Home> {
                   )
                 ],
               ),
-            ),
+            ),//Mentors
             SizedBox(
               height: 90,
               width: MediaQuery.of(context).size.width,
@@ -275,7 +275,86 @@ class _HomeState extends State<Home> {
                       ),
                     );
                   }),
+            ),//mentor builder
+
+            Padding(
+              padding: const EdgeInsets.only(
+                  top: 15, bottom: 15, left: 10, right: 10),
+              child: Row(
+                children: [
+                  const Text(
+                    "Today's Class",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18,
+                    ),
+                  ),
+                  Spacer(),
+                ],
+              ),
+            ),//Class
+            SizedBox(
+              height: 300,
+              width: MediaQuery.of(context).size.width,
+              child: ListView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 5,
+                  itemBuilder: (context, index) {
+                    return Column(children: [
+                      SizedBox(
+                        width: 185,
+                        child: Card(
+                          color:"60BCFA".toColor(),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 20,top: 10,bottom: 5),
+                                child: Row(
+                                  children: [
+                                    Text("Live"),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(3.0),
+                                child: Card(
+                                  elevation: 3,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius:
+                                    BorderRadius.circular(20),
+                                  ),
+                                  clipBehavior: Clip.antiAlias,
+                                  child: ClipRRect(
+                                    child: Ink.image(
+                                      image: const AssetImage(
+                                          "assets/images/food_drives/Img1.png"),
+                                      height: 100,
+                                      width: 155,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              ListTile(
+                                title: const Text("Class : Title"),
+                                subtitle: const Text("Part : Subtitle"),
+
+                                ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ]);
+                  }),
             ),
+
+
+
             Padding(
               padding: const EdgeInsets.only(
                   top: 15, bottom: 15, left: 10, right: 10),
@@ -309,7 +388,7 @@ class _HomeState extends State<Home> {
                   )
                 ],
               ),
-            ),
+            ),//News
             SizedBox(
               height: 280,
               width: MediaQuery.of(context).size.width,
@@ -366,7 +445,7 @@ class _HomeState extends State<Home> {
                       ),
                     ]);
                   }),
-            ),
+            ),//news builder
 
 
           ],
