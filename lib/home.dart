@@ -28,6 +28,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
+        padding: EdgeInsets.all(3),
         physics: BouncingScrollPhysics(),
         child: Column(
           children: [
@@ -247,10 +248,127 @@ class _HomeState extends State<Home> {
                         ),
                       ],
                     ),
+
                   )
                 ],
               ),
             ),
+            SizedBox(
+              height: 90,
+              width: MediaQuery.of(context).size.width,
+              child: ListView.builder(
+                physics: BouncingScrollPhysics(),
+                  itemCount: 5,
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return SizedBox(
+                      width: 211,
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)),
+                        child: const ListTile(
+                          leading: CircleAvatar(),
+                          title: Text("Name"),
+                          subtitle: Text("details"),
+                        ),
+                      ),
+                    );
+                  }),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                  top: 15, bottom: 15, left: 10, right: 10),
+              child: Row(
+                children: [
+                  const Text(
+                    "Daily News",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w800,
+                      fontSize: 18,
+                    ),
+                  ),
+                  Spacer(),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Row(
+                      children: [
+                        Text(
+                          "See all",
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.grey.shade700),
+                        ),
+                        Icon(
+                          Icons.arrow_forward_ios,
+                          size: 14,
+                          color: Colors.grey.shade700,
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 280,
+              width: MediaQuery.of(context).size.width,
+              child: ListView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 5,
+                  itemBuilder: (context, index) {
+                    return Column(children: [
+                      SizedBox(
+                        width: 250,
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(3.0),
+                                child: Card(
+                                  elevation: 3,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius:
+                                    BorderRadius.circular(20),
+                                  ),
+                                  clipBehavior: Clip.antiAlias,
+                                  child: ClipRRect(
+                                    child: Ink.image(
+                                      image: const AssetImage(
+                                          "assets/images/food_drives/Img1.png"),
+                                      height: 170,
+                                      width: 230,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              ListTile(
+                                title: const Text("Title"),
+                                subtitle: const Text("Subtitle"),
+                                trailing: FloatingActionButton.small(
+                                  backgroundColor: "49E5EA".toColor(),
+                                  heroTag: "float$index",
+                                  elevation: 0,
+                                  onPressed: () {},
+                                  child: const Icon(
+                                      Icons.remove_red_eye_rounded),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ]);
+                  }),
+            ),
+
+
           ],
         ),
       ),
