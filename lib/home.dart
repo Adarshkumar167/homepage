@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:homepage/color.dart';
+import 'package:homepage/gbar.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -27,6 +28,8 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
+      bottomNavigationBar: gbar(),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(3),
@@ -294,7 +297,7 @@ class _HomeState extends State<Home> {
               ),
             ), //Class
             SizedBox(
-              height: 300,
+              height: 260,
               width: MediaQuery.of(context).size.width,
               child: ListView.builder(
                   physics: const BouncingScrollPhysics(),
@@ -529,7 +532,7 @@ class _HomeState extends State<Home> {
               ),
             ),
             const SizedBox(
-              height: 50,
+              height: 150,
             ),
           ],
         ),
