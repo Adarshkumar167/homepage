@@ -23,13 +23,14 @@ class _HomeState extends State<Home> {
       showSubtitle = !showSubtitle;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(3),
-        physics: BouncingScrollPhysics(),
+        padding: const EdgeInsets.all(3),
+        physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
             const SizedBox(
@@ -77,7 +78,7 @@ class _HomeState extends State<Home> {
                     const Text(
                       'My name is Didi',
                       style:
-                      TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(
                       height: 20,
@@ -125,7 +126,7 @@ class _HomeState extends State<Home> {
                       fontSize: 18,
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   GestureDetector(
                     onTap: () {},
                     child: Row(
@@ -133,8 +134,7 @@ class _HomeState extends State<Home> {
                         Text(
                           "See all",
                           style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.grey.shade700),
+                              fontSize: 14, color: Colors.grey.shade700),
                         ),
                         Icon(
                           Icons.arrow_forward_ios,
@@ -146,7 +146,7 @@ class _HomeState extends State<Home> {
                   )
                 ],
               ),
-            ),//Food drive(FD)
+            ), //Food drive(FD)
             SizedBox(
               height: 290,
               width: MediaQuery.of(context).size.width,
@@ -156,8 +156,7 @@ class _HomeState extends State<Home> {
                   scrollDirection: Axis.horizontal,
                   itemCount: 5,
                   itemBuilder: (context, index) {
-                    return Column(
-                        children: [
+                    return Column(children: [
                       SizedBox(
                         width: 280,
                         child: Card(
@@ -172,8 +171,7 @@ class _HomeState extends State<Home> {
                                 child: Card(
                                   elevation: 3,
                                   shape: RoundedRectangleBorder(
-                                    borderRadius:
-                                    BorderRadius.circular(20),
+                                    borderRadius: BorderRadius.circular(20),
                                   ),
                                   clipBehavior: Clip.antiAlias,
                                   child: ClipRRect(
@@ -189,7 +187,9 @@ class _HomeState extends State<Home> {
                               ),
                               ListTile(
                                 title: const Text("Title"),
-                                subtitle: showSubtitle ? const Text("Subtitle") : null,
+                                subtitle: showSubtitle
+                                    ? const Text("Subtitle")
+                                    : null,
                                 trailing: FloatingActionButton.small(
                                   backgroundColor: "49E5EA".toColor(),
                                   heroTag: "float$index",
@@ -197,17 +197,19 @@ class _HomeState extends State<Home> {
                                   onPressed: () {
                                     toggleSubtitle();
                                   },
-                                  child: showSubtitle ? Icon(Icons.visibility_off):Icon(Icons.remove_red_eye_rounded),
+                                  child: showSubtitle
+                                      ? const Icon(Icons.visibility_off)
+                                      : const Icon(
+                                          Icons.remove_red_eye_rounded),
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 10,left: 8,right: 8),
+                              const Padding(
+                                padding: EdgeInsets.only(
+                                    bottom: 10, left: 8, right: 8),
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Text("Details here")
-
-                                  ],
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [Text("Details here")],
                                 ),
                               )
                             ],
@@ -216,7 +218,7 @@ class _HomeState extends State<Home> {
                       ),
                     ]);
                   }),
-            ),//FD builder
+            ), //FD builder
 
             Padding(
               padding: const EdgeInsets.only(
@@ -230,7 +232,7 @@ class _HomeState extends State<Home> {
                       fontSize: 18,
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   GestureDetector(
                     onTap: () {},
                     child: Row(
@@ -238,8 +240,7 @@ class _HomeState extends State<Home> {
                         Text(
                           "See all",
                           style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.grey.shade700),
+                              fontSize: 14, color: Colors.grey.shade700),
                         ),
                         Icon(
                           Icons.arrow_forward_ios,
@@ -248,16 +249,15 @@ class _HomeState extends State<Home> {
                         ),
                       ],
                     ),
-
                   )
                 ],
               ),
-            ),//Mentors
+            ), //Mentors
             SizedBox(
               height: 90,
               width: MediaQuery.of(context).size.width,
               child: ListView.builder(
-                physics: BouncingScrollPhysics(),
+                  physics: const BouncingScrollPhysics(),
                   itemCount: 5,
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
@@ -275,15 +275,15 @@ class _HomeState extends State<Home> {
                       ),
                     );
                   }),
-            ),//mentor builder
+            ), //mentor builder
 
-            Padding(
-              padding: const EdgeInsets.only(
-                  top: 15, bottom: 15, left: 10, right: 10),
+            const Padding(
+              padding:
+                  EdgeInsets.only(top: 15, bottom: 15, left: 10, right: 10),
               child: Row(
                 children: [
-                  const Text(
-                    "Today's Class",
+                  Text(
+                    "Today's Classes",
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 18,
@@ -292,7 +292,7 @@ class _HomeState extends State<Home> {
                   Spacer(),
                 ],
               ),
-            ),//Class
+            ), //Class
             SizedBox(
               height: 300,
               width: MediaQuery.of(context).size.width,
@@ -306,17 +306,32 @@ class _HomeState extends State<Home> {
                       SizedBox(
                         width: 185,
                         child: Card(
-                          color:"60BCFA".toColor(),
+                          color: "60BCFA".toColor(),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Column(
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(left: 20,top: 10,bottom: 5),
+                                padding:
+                                    const EdgeInsets.only(left: 20, top: 10),
                                 child: Row(
                                   children: [
-                                    Text("Live"),
+                                    SizedBox(
+                                      width: 20.0,
+                                      child: Image.asset(
+                                        "assets/images/Oval.png",
+                                        fit: BoxFit.scaleDown,
+                                        height:
+                                            7, // Set the desired height here
+                                      ),
+                                    ),
+                                    const Text(
+                                      "Live",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),
@@ -325,8 +340,7 @@ class _HomeState extends State<Home> {
                                 child: Card(
                                   elevation: 3,
                                   shape: RoundedRectangleBorder(
-                                    borderRadius:
-                                    BorderRadius.circular(20),
+                                    borderRadius: BorderRadius.circular(20),
                                   ),
                                   clipBehavior: Clip.antiAlias,
                                   child: ClipRRect(
@@ -340,11 +354,12 @@ class _HomeState extends State<Home> {
                                   ),
                                 ),
                               ),
-                              ListTile(
-                                title: const Text("Class : Title"),
-                                subtitle: const Text("Part : Subtitle"),
-
-                                ),
+                              const ListTile(
+                                title: Text("Class : Title",
+                                    style: TextStyle(color: Colors.white)),
+                                subtitle: Text("Part : Subtitle",
+                                    style: TextStyle(color: Colors.white)),
+                              ),
                             ],
                           ),
                         ),
@@ -353,7 +368,21 @@ class _HomeState extends State<Home> {
                   }),
             ),
 
-
+            const Padding(
+              padding: EdgeInsets.only(bottom: 15, left: 10, right: 10),
+              child: Row(
+                children: [
+                  Text(
+                    "Today Classes Schedule",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18,
+                    ),
+                  ),
+                  Spacer(),
+                ],
+              ),
+            ), //Class
 
             Padding(
               padding: const EdgeInsets.only(
@@ -367,7 +396,7 @@ class _HomeState extends State<Home> {
                       fontSize: 18,
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   GestureDetector(
                     onTap: () {},
                     child: Row(
@@ -375,8 +404,7 @@ class _HomeState extends State<Home> {
                         Text(
                           "See all",
                           style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.grey.shade700),
+                              fontSize: 14, color: Colors.grey.shade700),
                         ),
                         Icon(
                           Icons.arrow_forward_ios,
@@ -388,7 +416,7 @@ class _HomeState extends State<Home> {
                   )
                 ],
               ),
-            ),//News
+            ), //News
             SizedBox(
               height: 280,
               width: MediaQuery.of(context).size.width,
@@ -412,8 +440,7 @@ class _HomeState extends State<Home> {
                                 child: Card(
                                   elevation: 3,
                                   shape: RoundedRectangleBorder(
-                                    borderRadius:
-                                    BorderRadius.circular(20),
+                                    borderRadius: BorderRadius.circular(20),
                                   ),
                                   clipBehavior: Clip.antiAlias,
                                   child: ClipRRect(
@@ -435,8 +462,8 @@ class _HomeState extends State<Home> {
                                   heroTag: "float$index",
                                   elevation: 0,
                                   onPressed: () {},
-                                  child: const Icon(
-                                      Icons.remove_red_eye_rounded),
+                                  child:
+                                      const Icon(Icons.remove_red_eye_rounded),
                                 ),
                               ),
                             ],
@@ -445,9 +472,65 @@ class _HomeState extends State<Home> {
                       ),
                     ]);
                   }),
-            ),//news builder
-
-
+            ), //news builder
+            Padding(
+              padding: const EdgeInsets.only(
+                  top: 15, bottom: 15, left: 10, right: 10),
+              child: Row(
+                children: [
+                  const Text(
+                    "Blogs",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w800,
+                      fontSize: 18,
+                    ),
+                  ),
+                  const Spacer(),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Row(
+                      children: [
+                        Text(
+                          "See all",
+                          style: TextStyle(
+                              fontSize: 14, color: Colors.grey.shade700),
+                        ),
+                        Icon(
+                          Icons.arrow_forward_ios,
+                          size: 14,
+                          color: Colors.grey.shade700,
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 320,
+              child: ListView.builder(
+                physics: const BouncingScrollPhysics(),
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemCount: 3,
+                itemBuilder: (context, index) {
+                  return SizedBox(
+                    width: 250,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Ink.image(
+                        image: AssetImage(
+                          "assets/images/$index.png",
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+            const SizedBox(
+              height: 50,
+            ),
           ],
         ),
       ),
